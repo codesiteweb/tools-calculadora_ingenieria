@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Fondo circular con el color principal -->
+  <circle cx="32" cy="32" r="32" fill="#00d4b8"/>
+  <!-- Cuerpo de la calculadora con esquinas redondeadas -->
+  <rect x="12" y="8" width="40" height="48" rx="6" fill="#ffffff"/>
+  <!-- Pantalla de la calculadora -->
+  <rect x="18" y="14" width="28" height="8" rx="2" fill="#d0d8e1"/>
+  <!-- Grid de teclas: tres filas y tres columnas -->
+  <circle cx="22" cy="32" r="2" fill="#00d4b8"/>
+  <circle cx="32" cy="32" r="2" fill="#00d4b8"/>
+  <circle cx="42" cy="32" r="2" fill="#00d4b8"/>
+  <circle cx="22" cy="38" r="2" fill="#00d4b8"/>
+  <circle cx="32" cy="38" r="2" fill="#00d4b8"/>
+  <circle cx="42" cy="38" r="2" fill="#00d4b8"/>
+  <circle cx="22" cy="44" r="2" fill="#00d4b8"/>
+  <circle cx="32" cy="44" r="2" fill="#00d4b8"/>
+  <circle cx="42" cy="44" r="2" fill="#00d4b8"/>
+</svg>

@@ -14,7 +14,6 @@ const ASSETS_TO_CACHE = [
   'https://codesiteweb.github.io/tools-calculadora_ingenieria/public/icons/icon-512x512.png'
 ];
 
-
 // Instalación: cachea los archivos
 self.addEventListener('install', (event) => {
   event.waitUntil(
