@@ -3,7 +3,7 @@ const ASSETS_TO_CACHE = [
   'https://codesiteweb.github.io/tools-calculadora_ingenieria/index.html',
   'https://codesiteweb.github.io/tools-calculadora_ingenieria/styles.css',
   'https://codesiteweb.github.io/tools-calculadora_ingenieria/scripts.js',
-  '/manifest.json',
+  'https://codesiteweb.github.io/tools-calculadora_ingenieria/manifest.json',
   'https://codesiteweb.github.io/tools-calculadora_ingenieria/public/icons/icon-72x72.png',
   'https://codesiteweb.github.io/tools-calculadora_ingenieria/public/icons/icon-96x96.png',
   'https://codesiteweb.github.io/tools-calculadora_ingenieria/public/icons/icon-128x128.png',
