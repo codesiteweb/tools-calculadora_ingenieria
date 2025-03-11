@@ -18,6 +18,10 @@
   
   <!-- Color del tema -->
   <meta name="theme-color" content="#FFFFFF" />
+
+  <!-- Librerías Marked para lenguaje Markdown en el modal de flat-logo -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css"> -->
 </head>
 <body>
   <main class="calculator-container">
@@ -66,14 +70,15 @@
       </button>
             
       <!-- Fila paréntesis -->
-      <button class="btn" data-value="(" aria-label="Abrir paréntesis">(</button>
-      <button class="btn" data-value=")" aria-label="Cerrar paréntesis">)</button>
+      <!-- <button class="btn" data-value="(" aria-label="Abrir paréntesis">(</button> -->
+      <!-- <button class="btn" data-value=")" aria-label="Cerrar paréntesis">)</button> -->
+
       <!-- Fila con coma, grado, retroceso, mod y reseteo -->
-      <button class="btn" data-value="," aria-label="" aria-label="Signo de puntuación, coma">,</button>
-      <button class="btn" data-value="°" aria-label="Signo grado">°</button>
+      <!-- <button class="btn" data-value="," aria-label="" aria-label="Signo de puntuación, coma">,</button> -->
+      <!-- <button class="btn" data-value="°" aria-label="Signo grado">°</button> -->
       <button class="btn backspace" data-value="backspace" aria-label="Botón borrado hacia atrás">🡨</button>
       <button class="btn operator" data-value="mod" aria-label="Operador módulo">mod</button>
-      <button class="btn clear" id="clearBtn" aria-label="Limpiar pantalla calculadora">C</button>
+      <button class="btn operator" data-value="+" aria-label="Signo más">+</button>
     </div>
 
     <!-- Fila de dígitos y operadores -->
@@ -81,7 +86,7 @@
       <button class="btn" data-value="7" aria-label="Número siete">7</button>
       <button class="btn" data-value="8" aria-label="Número ocho">8</button>
       <button class="btn" data-value="9" aria-label="Número nueve">9</button>
-      <button class="btn operator" data-value="/" aria-label="Signo de división">÷</button>
+      <button class="btn operator" data-value="-" aria-label="Signo de resta">-</button>
     </div>
 
     <div class="button-row">
@@ -95,13 +100,26 @@
       <button class="btn" data-value="1" aria-label="Número uno">1</button>
       <button class="btn" data-value="2" aria-label="Número dos">2</button>
       <button class="btn" data-value="3" aria-label="Número tres">3</button>
-      <button class="btn operator" data-value="-" aria-label="Signo de resta">-</button>
+      <button class="btn operator" data-value="/" aria-label="Signo de división">÷</button>
     </div>
 
     <div class="button-row">
       <button class="btn" data-value="0" aria-label="Número cero">0</button>
-      <button class="btn decimal" data-value="." aria-label="Signo de puntuación, punto">.</button>
-      <button class="btn operator" data-value="+" aria-label="Signo más">+</button>
+
+      <!-- Contenedor para el botón de símbolos especiales -->
+      <div class="btn special-wrapper" aria-label="Contenedor de símbolos">
+        <button id="specialCharsBtn" class="inner-btn" aria-label="Símbolos especiales">(),.°</button>
+        <div id="specialCharsMenu" class="dropdown-menu">
+          <button class="dropdown-item" data-value="(">(</button>
+          <button class="dropdown-item" data-value=")">)</button>
+          <button class="dropdown-item" data-value=",">,</button>
+          <button class="dropdown-item" data-value=".">.</button>
+          <button class="dropdown-item" data-value="°">°</button>
+        </div>
+      </div>
+      
+      <!-- <button class="btn decimal" data-value="." aria-label="Signo de puntuación, punto">.</button> -->
+      <button class="btn clear" id="clearBtn" aria-label="Limpiar pantalla calculadora">C</button>
       <button class="btn equals" data-value="=" aria-label="Signo igual">=</button>
     </div>
   </main>
@@ -110,5 +128,15 @@
 
   <!-- Service Worker -->
   <script src="https://codesiteweb.github.io/tools-calculadora_ingenieria/sw-register.js" defer></script>
+
+  <!-- Modal para mostrar el contenido de README.md -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" aria-label="Cerrar modal">&times;</span>
+      <div id="modal-document-content">
+        <!-- Aquí se cargará el contenido del archivo README.md -->
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg 
+  xmlns="http://www.w3.org/2000/svg" 
+  viewBox="0 0 64 64"
+>
+  <!-- FONDO CIRCULAR PRINCIPAL -->
+  <circle cx="32" cy="32" r="32" fill="#00d4b8"/>
+  
+  <!-- CUERPO DE LA CALCULADORA -->
+  <rect x="12" y="8" width="40" height="48" rx="6" fill="#ffffff"/>
+  
+  <!-- PANTALLA DE LA CALCULADORA -->
+  <rect x="18" y="14" width="28" height="8" rx="2" fill="#d0d8e1"/>
+  
+  <!--
+      ANIMACIÓN DE LA OPERACIÓN 23+42=65
+      Ciclo total: 8s (repeatCount="indefinite").
+      
+      Cada dígito:
+        - Aparece (fade in) en un instante determinado (por ejemplo, t=0.4s, t=0.8s, etc.)
+        - Permanece visible hasta t=6s
+        - Desaparece (fade out) entre t=6s y t=7s
+        - De t=7s a t=8s se queda invisible
+        - Al cumplirse 8s, reinicia todo.
+        
+      Para cada uno, usamos "keyTimes" y "values" que marcan:
+        1) un breve intervalo para fade in
+        2) periodo de visibilidad
+        3) fade out en 6..7 (esto es fracción 0.75..0.875 de 8)
+        4) invisibilidad final
+  -->
+  
+  <!-- Carácter 1: '2' 
+       - Aparece inmediatamente al inicio (t=0).
+       - Fade in rápido (0..0.2s aprox).
+       - Permanece visible hasta t=6 (0.75 de 8s).
+       - Se desvanece 6..7 (0.75..0.875).
+  -->
+  <text x="18" y="18" font-family="monospace" font-size="4" fill="#000">
+    2
+    <animate
+      attributeName="opacity"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="linear"
+      keyTimes="0;0.025;0.75;0.875;1"
+      values="0;1;1;0;0"
+      begin="0s"
+    />
+  </text>
+  
+  <!-- Carácter 2: '3' 
+       - Comienza su fade in en t=0.4s => fracción=0.05
+         Se anima 0.05..0.075 => visible
+       - Permanece visible hasta 0.75 (t=6s)
+       - Se desvanece 0.75..0.875
+  -->
+  <text x="21" y="18" font-family="monospace" font-size="4" fill="#000">
+    3
+    <animate
+      attributeName="opacity"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="linear"
+      keyTimes="0;0.05;0.075;0.75;0.875;1"
+      values="0;0;1;1;0;0"
+      begin="0s"
+    />
+  </text>
+  
+  <!-- Carácter 3: '+' 
+       - Empieza fade in en t=0.8s => fracción=0.1
+         (0.1..0.125) => fade in
+       - Hasta 0.75 => visible, 0.75..0.875 => fade out
+  -->
+  <text x="24" y="18" font-family="monospace" font-size="4" fill="#000">
+    +
+    <animate
+      attributeName="opacity"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="linear"
+      keyTimes="0;0.1;0.125;0.75;0.875;1"
+      values="0;0;1;1;0;0"
+      begin="0s"
+    />
+  </text>
+  
+  <!-- Carácter 4: '4' 
+       - Fade in en t=1.2s => fracción=0.15 (0.15..0.175)
+       - Hasta 0.75 => visible, luego fade out
+  -->
+  <text x="27" y="18" font-family="monospace" font-size="4" fill="#000">
+    4
+    <animate
+      attributeName="opacity"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="linear"
+      keyTimes="0;0.15;0.175;0.75;0.875;1"
+      values="0;0;1;1;0;0"
+      begin="0s"
+    />
+  </text>
+  
+  <!-- Carácter 5: '2' 
+       - Fade in en t=1.6s => fr=0.2 (0.2..0.225)
+  -->
+  <text x="30" y="18" font-family="monospace" font-size="4" fill="#000">
+    2
+    <animate
+      attributeName="opacity"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="linear"
+      keyTimes="0;0.2;0.225;0.75;0.875;1"
+      values="0;0;1;1;0;0"
+      begin="0s"
+    />
+  </text>
+  
+  <!-- Carácter 6: '=' 
+       - Fade in en t=2.0s => fr=0.25 (0.25..0.275)
+  -->
+  <text x="33" y="18" font-family="monospace" font-size="4" fill="#000">
+    =
+    <animate
+      attributeName="opacity"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="linear"
+      keyTimes="0;0.25;0.275;0.75;0.875;1"
+      values="0;0;1;1;0;0"
+      begin="0s"
+    />
+  </text>
+  
+  <!-- Carácter 7: '6' 
+       - Fade in en t=2.4s => fr=0.3 (0.3..0.325)
+  -->
+  <text x="36" y="18" font-family="monospace" font-size="4" fill="#000">
+    6
+    <animate
+      attributeName="opacity"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="linear"
+      keyTimes="0;0.3;0.325;0.75;0.875;1"
+      values="0;0;1;1;0;0"
+      begin="0s"
+    />
+  </text>
+  
+  <!-- Carácter 8: '5' 
+       - Fade in en t=2.8s => fr=0.35 (0.35..0.375)
+  -->
+  <text x="39" y="18" font-family="monospace" font-size="4" fill="#000">
+    5
+    <animate
+      attributeName="opacity"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="linear"
+      keyTimes="0;0.35;0.375;0.75;0.875;1"
+      values="0;0;1;1;0;0"
+      begin="0s"
+    />
+  </text>
+  
+  <!--
+      BOTONES DE LA CALCULADORA (4 FILAS x 4 COLUMNAS):
+      Etiquetas: 0..9, +, -, *, /, =, C
+      Solo se "iluminan" (brevemente en amarillo) los que intervienen en la
+      operación 23+42=65 => 2, 3, +, 4, 2 (otra vez), =, 6, 5.
+      
+      Distribución de filas (x,y):
+       Fila 1 (y=28): 7 (22,28), 8 (30,28), 9 (38,28), / (46,28)
+       Fila 2 (y=34): 4 (22,34), 5 (30,34), 6 (38,34), * (46,34)
+       Fila 3 (y=40): 1 (22,40), 2 (30,40), 3 (38,40), - (46,40)
+       Fila 4 (y=46): 0 (22,46), = (30,46), + (38,46), C (46,46)
+      
+      Para "iluminar" en momentos precisos, usamos "calcMode='discrete'"
+      y definimos keyTimes que abarcan los intervalos donde se enciende
+      (amarillo) y se apaga (celeste).
+  -->
+  
+  <!-- FILA 1: 7, 8, 9, / (sin animaciones especiales) -->
+  <circle cx="22" cy="28" r="2" fill="#00d4b8"/>
+  <text x="22" y="28.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">7</text>
+  
+  <circle cx="30" cy="28" r="2" fill="#00d4b8"/>
+  <text x="30" y="28.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">8</text>
+  
+  <circle cx="38" cy="28" r="2" fill="#00d4b8"/>
+  <text x="38" y="28.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">9</text>
+  
+  <circle cx="46" cy="28" r="2" fill="#00d4b8"/>
+  <text x="46" y="28.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">/</text>
+  
+  <!-- FILA 2: 4, 5, 6, * -->
+  <!-- Botón 4 => se enciende cuando aparece el '4' en pantalla: t=1.2..1.5 => 
+       Lo haremos "breve" en t=1.2..1.5 => en fracciones 0.15..0.1875 (0.3s).
+       Para simplificar, encendemos 0.15..0.1875 => 0.0375 de ancho => 0.3s reales.
+  -->
+  <circle cx="22" cy="34" r="2" fill="#00d4b8">
+    <animate
+      attributeName="fill"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="discrete"
+      keyTimes="0;0.15;0.1875;1"
+      values="#00d4b8;#FFFF00;#00d4b8;#00d4b8"
+      begin="0s"
+    />
+  </circle>
+  <text x="22" y="34.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">4</text>
+  
+  <!-- Botón 5 => se enciende cuando aparece '5': t=2.8..3.1 => fr=0.35..0.3875 -->
+  <circle cx="30" cy="34" r="2" fill="#00d4b8">
+    <animate
+      attributeName="fill"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="discrete"
+      keyTimes="0;0.35;0.3875;1"
+      values="#00d4b8;#FFFF00;#00d4b8;#00d4b8"
+      begin="0s"
+    />
+  </circle>
+  <text x="30" y="34.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">5</text>
+  
+  <!-- Botón 6 => se enciende cuando aparece '6': t=2.4..2.7 => fr=0.3..0.3375 -->
+  <circle cx="38" cy="34" r="2" fill="#00d4b8">
+    <animate
+      attributeName="fill"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="discrete"
+      keyTimes="0;0.3;0.3375;1"
+      values="#00d4b8;#FFFF00;#00d4b8;#00d4b8"
+      begin="0s"
+    />
+  </circle>
+  <text x="38" y="34.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">6</text>
+  
+  <circle cx="46" cy="34" r="2" fill="#00d4b8"/>
+  <text x="46" y="34.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">*</text>
+  
+  <!-- FILA 3: 1, 2, 3, - -->
+  <circle cx="22" cy="40" r="2" fill="#00d4b8"/>
+  <text x="22" y="40.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">1</text>
+  
+  <!-- Botón 2 => se pulsa DOS VECES: 
+       1) t=0..0.3 => fr=0..0.0375 
+       2) t=1.6..1.9 => fr=0.2..0.2375
+       Se hace en una sola <animate> con keyTimes en modo discrete:
+         Segmento1: 0..0.0375 => #FFFF00
+         Segmento2: 0.0375..0.2 => #00d4b8
+         Segmento3: 0.2..0.2375 => #FFFF00
+         Segmento4: 0.2375..1 => #00d4b8
+  -->
+  <circle cx="30" cy="40" r="2" fill="#00d4b8">
+    <animate
+      attributeName="fill"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="discrete"
+      keyTimes="0;0.0375;0.2;0.2375;1"
+      values="#FFFF00;#00d4b8;#FFFF00;#00d4b8;#00d4b8"
+      begin="0s"
+    />
+  </circle>
+  <text x="30" y="40.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">2</text>
+  
+  <!-- Botón 3 => se enciende cuando aparece '3': t=0.4..0.7 => fr=0.05..0.0875 -->
+  <circle cx="38" cy="40" r="2" fill="#00d4b8">
+    <animate
+      attributeName="fill"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="discrete"
+      keyTimes="0;0.05;0.0875;1"
+      values="#00d4b8;#FFFF00;#00d4b8;#00d4b8"
+      begin="0s"
+    />
+  </circle>
+  <text x="38" y="40.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">3</text>
+  
+  <circle cx="46" cy="40" r="2" fill="#00d4b8"/>
+  <text x="46" y="40.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">-</text>
+  
+  <!-- FILA 4: 0, =, +, C -->
+  <circle cx="22" cy="46" r="2" fill="#00d4b8"/>
+  <text x="22" y="46.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">0</text>
+  
+  <!-- Botón = => se enciende cuando aparece '=': t=2.0..2.3 => fr=0.25..0.2875 (0.3s) -->
+  <circle cx="30" cy="46" r="2" fill="#00d4b8">
+    <animate
+      attributeName="fill"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="discrete"
+      keyTimes="0;0.25;0.2875;1"
+      values="#00d4b8;#FFFF00;#00d4b8;#00d4b8"
+      begin="0s"
+    />
+  </circle>
+  <text x="30" y="46.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">=</text>
+  
+  <!-- Botón + => se enciende cuando aparece '+': t=0.8..1.1 => fr=0.1..0.1375 (0.3s) -->
+  <circle cx="38" cy="46" r="2" fill="#00d4b8">
+    <animate
+      attributeName="fill"
+      dur="8s"
+      repeatCount="indefinite"
+      calcMode="discrete"
+      keyTimes="0;0.1;0.1375;1"
+      values="#00d4b8;#FFFF00;#00d4b8;#00d4b8"
+      begin="0s"
+    />
+  </circle>
+  <text x="38" y="46.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">+</text>
+  
+  <circle cx="46" cy="46" r="2" fill="#00d4b8"/>
+  <text x="46" y="46.6" font-size="3" text-anchor="middle" fill="#000" font-family="monospace">C</text>
+</svg>

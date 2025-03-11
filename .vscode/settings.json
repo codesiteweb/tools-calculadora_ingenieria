@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.AdvanceCustomBrowserCmdLine": "chrome"
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "chrome",
+    "http-server": "http-server . -c-1",
 }

@@ -226,6 +226,38 @@ function attachEventListeners() {
     });
   });
 
+  /* --------------------------------------------------------------------------------
+    Funcionalidad para botón de símbolos especiales
+  ----------------------------------------------------------------------------------- */
+  // Captura el botón de activación y el menú de símbolos especiales
+  const specialCharsBtn = document.getElementById('specialCharsBtn');
+  const specialCharsMenu = document.getElementById('specialCharsMenu');
+
+  // Alternar visibilidad con clase "active"
+  specialCharsBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      specialCharsMenu.classList.toggle('active'); // Activa o desactiva el menú
+  });
+
+  // Escuchar eventos en cada símbolo especial dentro del menú desplegable
+  specialCharsMenu.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', (event) => {
+          event.stopPropagation(); // Evitar que el evento suba
+          currentMaqueta.expression += item.getAttribute('data-value');
+          updateDisplays();
+          
+          // Cerrar el menú correctamente
+          specialCharsMenu.classList.remove('active');
+      });
+  });
+
+  // Cerrar el menú cuando se haga clic fuera de él
+  document.addEventListener('click', function(event) {
+      if (!specialCharsMenu.contains(event.target) && event.target !== specialCharsBtn) {
+          specialCharsMenu.classList.remove('active');
+      }
+  });
+  
   // Escuchar clicks en botones de funciones de ingeniería (.sci-func)
   const sciButtons = document.querySelectorAll('.sci-func');
   sciButtons.forEach(sciBtn => {
@@ -286,6 +318,50 @@ function attachEventListeners() {
     }
   });
 }
+
+/* Modal para mostrar el contenido de README.md */
+document.addEventListener('DOMContentLoaded', function() {
+  // Modal: obtener elementos
+  const modal = document.getElementById('modal');
+  const modalContent = document.getElementById('modal-document-content');
+  const closeModal = document.querySelector('.close');
+
+  const flatLogoButton = document.querySelector('.flat-logo');
+  flatLogoButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    fetch('README.md')
+      .then(response => {
+         if (!response.ok) {
+           throw new Error('Error al cargar README.md');
+         }
+         return response.text();
+      })
+      .then(markdown => {
+         // Convertir markdown a HTML usando marked
+         modalContent.innerHTML = marked.parse(markdown);
+         // (Opcional) Agregar clase para aplicar estilos de markdown
+         modalContent.classList.add('markdown-body');
+         modal.style.display = 'block';
+      })
+      .catch(error => {
+         console.error(error);
+         modalContent.textContent = 'No se pudo cargar el archivo README.md';
+         modal.style.display = 'block';
+      });
+  });
+
+  // Cerrar el modal al hacer clic en la "X"
+  closeModal.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+
+  // Cerrar el modal al hacer clic fuera del contenido del modal
+  window.addEventListener('click', function(event) {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
 
 // Inicialización de la aplicación al cargar la página
 let currentMaqueta;

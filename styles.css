@@ -57,7 +57,7 @@ html, body {
   background: linear-gradient(to top, #e0e0e0, #ffffff);
   /* Sombra más pronunciada */
   box-shadow: 0 0.4vmax 1vmax rgba(0, 0, 0, 0.3), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.6);
-  font-size: 3vmax;
+  font-size: 4vmax;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -84,9 +84,11 @@ html, body {
   border: none;
 }
 svg {
-  width: 6vmax;
   height: 6vmax;
-  margin-top: 1vmax;
+  width: 18.5vw;
+  margin-top: 0.1vmax;
+  transform: scale(1.2);
+  background-color: #61b17246;
 }
 
 .btn.backspace {
@@ -177,6 +179,206 @@ svg {
 .clear:active {
   background: #c72f41;
   box-shadow: 0 0.2vmax 0.4vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+/* Contenedor del botón especial (cuadrícula de símbolos) */
+.special-wrapper {
+  position: relative;
+  flex: 1;
+  margin: 0.5vmax;
+  border-radius: 1vmax;
+  background: linear-gradient(to top, #e0e0e0, #ffffff);
+  box-shadow: 0 0.4vmax 1vmax rgba(0,0,0,0.3), inset 0 0.1vmax 0.2vmax rgba(255,255,255,0.6);
+  cursor: pointer;
+}
+/* Botón interno estilizado como otros botones */
+.inner-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 2.5vmax;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 4vmax;
+}
+/* Menú desplegable estilizado en cuadrícula */
+.dropdown-menu {
+  visibility: hidden; /* Ocultar sin eliminar espacio */
+  opacity: 0;
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 1vmax;
+  box-shadow: 0 0.5vmax 1vmax rgba(0,0,0,0.3);
+  padding: 0.3vmax;
+  box-sizing: border-box;
+  z-index: 1000;
+
+  /* Cuadrícula */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(7vmax, 1fr)); /* 3 columnas */
+  grid-template-rows: repeat(2, minmax(7vmax, auto));  /* 2 filas */
+  gap: 0.7vmax; /* Espacio entre elementos */
+}
+/* Cuando el menú esté activo */
+.dropdown-menu.active {
+  visibility: visible; /* Ahora sí se muestra */
+  opacity: 1;
+}
+/* Cada ítem en el menú estilizado como botón independiente */
+.dropdown-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, #ffffff, #eaeaea);
+  box-shadow: 0 0.3vmax 0.6vmax rgba(0,0,0,0.2), inset 0 0.1vmax 0.2vmax rgba(255,255,255,0.6);
+  border-radius: 0.7vmax;
+  font-size: 2.5vmax;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: 4vmax;
+  transition: all 0.2s ease-in-out;
+}
+/* Efecto Hover y Active */
+.dropdown-item:hover {
+  background: linear-gradient(to top, #dcdcdc, #f8f8f8);
+  box-shadow: 0 0.4vmax 0.7vmax rgba(0,0,0,0.3);
+}
+.dropdown-item:active {
+  background: linear-gradient(to top, #c0c0c0, #e0e0e0);
+  transform: scale(0.95);
+}
+
+/* Modal para mostrar el contenido de README.md */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 2000; /* Se superpone al contenido existente */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente */
+}
+.modal-content {
+  background: #e0f7fa; /* Fondo nuevo: celeste claro */
+  margin: 10% auto;
+  padding: 2vw;
+  border-radius: 0.8vw;
+  width: 100%;
+  max-width: 90%;
+  box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 1vw;
+  right: 2vw;
+  font-size: 4.8vmax;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+/* Estilos personalizados para el contenido Markdown en el modal */
+#modal-document-content {
+  font-family: 'Verdana', sans-serif;
+  color: #222;
+  line-height: 1.8;
+  font-size: 2vmax;
+  padding: 1vw;
+  background-color: #fafafa;
+  border-radius: 0.8vw;
+  border: 0.1vw solid #ddd;
+}
+/* Estilos para elementos Markdown (encabezados, párrafos, listas, etc.) */
+#modal-document-content h1,
+#modal-document-content h2,
+#modal-document-content h3,
+#modal-document-content h4,
+#modal-document-content h5,
+#modal-document-content h6 {
+  color: #d23600;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-family: 'Trebuchet MS', sans-serif;
+  text-shadow: 0.1vw 0.1vw 0.1vw rgba(0, 0, 0, 0.1);
+}
+#modal-document-content p {
+  margin-bottom: 1em;
+  text-align: justify;
+}
+/* Estilos para botones específicos dentro del contenido Markdown */
+#modal-document-content button {
+  padding: 1vw 2vw;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  border: none;
+  border-radius: 0.5vw;
+  transform: scale(1.85);
+  color: #fff;
+  font-weight: bold;
+  font-size: 2vw;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+  box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.1);
+}
+#modal-document-content button:hover {
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+}
+#modal-document-content button:active {
+  transform: scale(0.98);
+  box-shadow: 0 0.2vw 0.3vw rgba(0, 0, 0, 0.2);
+}
+/* Estilos específicos para el botón con id="doneButton" y botón con id="exitButton" modal markdown*/
+.button-container-flex {
+  display: flex;
+  justify-content: space-between; /* Deja un botón a la izquierda y otro a la derecha */
+  align-items: center;           /* Alinea verticalmente al centro */
+  margin-top: 2vw;               /* Espacio opcional arriba del contenedor */
+  width: 100%;
+}
+
+/* Conservamos estilos de color y apariencia, quitamos posiciones absolutas/márgenes exagerados */
+#modal-document-content #doneButton,
+#modal-document-content #exitButton {
+  margin: 0;
+  /* Sin 'position: absolute' */
+  /* El resto de tu estilo se mantiene igual */
+}
+
+/* Botón "Done" */
+#modal-document-content #doneButton {
+  font-size: 1.8vw;
+  margin-left: 5.5vw;
+  margin-bottom: 3.5vw;
+  padding: 1.2vw 2.4vw;
+  border-radius: 0.8vw;
+  border: 0.2vw solid #1e7e34;
+  box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s;
+  background: linear-gradient(45deg, #28a745, #218838);
+}
+
+/* Botón "Salir" */
+#modal-document-content #exitButton {
+  font-size: 1.8vw;
+  margin-right: 5.5vw;
+  margin-bottom: 3.5vw;
+  padding: 1.2vw 2.4vw;
+  border-radius: 0.8vw;
+  border: 0.2vw solid #0056b3;
+  box-shadow: 0 0.4vw 0.6vw rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s;
+  background: linear-gradient(45deg, #007bff, #0056b3);
 }
 
 /* Ajuste del tamaño de fuente en pantallas muy pequeñas */
