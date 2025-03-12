@@ -32,7 +32,7 @@ Si desea apoyar nuestro trabajo, haga clic en el botón **Done** a continuación
 <!-- Botones "Done" que abre el modal de donaciones y Salir que cierra el modal de donaciones-->
 <div class="button-container-flex">
   <button id="doneButton" onclick="document.getElementById('donationModal').style.display='block'">Done</button>
-  <button id="exitButton" onclick="document.getElementById('donationModal').style.display='none'">Salir</button>
+  <button id="exitButton" onclick="cerrarModal()">Salir</button>
 </div>
 
 <!-- Modal para donaciones -->

@@ -96,7 +96,7 @@ svg {
   color: #fff;                     /* Texto en blanco para buen contraste */
   border: none;
   border-radius: 1vmax;
-  font-size: 1.2rem;
+  font-size: 4.7vmax;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   /* Sombra para dar profundidad, similar a otros botones */
@@ -123,18 +123,18 @@ svg {
 
 /* Diferentes colores para operadores, igual, clear, etc. */
 .operator {
-  background: #ff8c00;
+  background: #e08300;
   color: #fff;
   box-shadow: 0 0.4vmax 0.6vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
 }
 
 .operator:hover {
-  background: #ff9f1f;
+  background: #f0982a;
   box-shadow: 0 0.6vmax 0.8vmax rgba(0, 0, 0, 0.25), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
 }
 
 .operator:active {
-  background: #e58800;
+  background: #d17300;
   box-shadow: 0 0.2vmax 0.4vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
 }
 

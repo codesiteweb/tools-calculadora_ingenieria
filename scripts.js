@@ -331,25 +331,31 @@ document.addEventListener('DOMContentLoaded', function() {
     event.preventDefault();
     fetch('README.md')
       .then(response => {
-         if (!response.ok) {
-           throw new Error('Error al cargar README.md');
-         }
-         return response.text();
+        if (!response.ok) {
+          throw new Error('Error al cargar README.md');
+        }
+        return response.text();
       })
       .then(markdown => {
-         // Convertir markdown a HTML usando marked
-         modalContent.innerHTML = marked.parse(markdown);
-         // (Opcional) Agregar clase para aplicar estilos de markdown
-         modalContent.classList.add('markdown-body');
-         modal.style.display = 'block';
+        modalContent.innerHTML = marked.parse(markdown);
+        
+        // Asignar el event listener al botón "Done"
+        const doneButton = document.getElementById('doneButton');
+        if (doneButton) {
+          doneButton.addEventListener('click', function() {
+            document.getElementById('donationModal').style.display = 'block';
+          });
+        }
+        
+        modal.style.display = 'block';
       })
       .catch(error => {
-         console.error(error);
-         modalContent.textContent = 'No se pudo cargar el archivo README.md';
-         modal.style.display = 'block';
+        console.error(error);
+        modalContent.textContent = 'No se pudo cargar el archivo README.md';
+        modal.style.display = 'block';
       });
   });
-
+  
   // Cerrar el modal al hacer clic en la "X"
   closeModal.addEventListener('click', function() {
     modal.style.display = 'none';
@@ -362,6 +368,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+// Botón de salida del modal
+function cerrarModal() {
+  // Seleccionamos el modal correcto
+  const modal = document.getElementById('modal');
+  if (modal) {
+    // Simplemente ocultamos el modal sin alterar otros estilos globales
+    modal.style.display = 'none';
+  }
+
+  // console.log("Cerrando modal...");
+}
 
 // Inicialización de la aplicación al cargar la página
 let currentMaqueta;
