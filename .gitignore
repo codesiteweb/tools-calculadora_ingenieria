@@ -1,0 +1,5 @@
+# # No - Ignorar la carpeta de configuraciones de Visual Studio Code
+# .vscode/
+
+# Ignorar la carpeta de módulos de Node
+node_modules/

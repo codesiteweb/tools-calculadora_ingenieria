@@ -1,0 +1,261 @@
+/* Quitar márgenes y forzar a ocupar todo el espacio */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #eef2f3, #d0d8e1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Contenedor principal: ocupa toda la pantalla */
+.calculator-container {
+  width: 100vw;
+  height: 100vh;
+  /* Display Flex para repartir espacio */
+  display: flex;
+  background: #fff;
+  overflow: hidden;
+  flex-direction: column;
+  border-radius: 0.2vmax;
+  box-shadow: 0 0.4vmax 1vmax rgba(0, 0, 0, 0.2);
+}
+
+/* 
+   Pantalla de resultados
+*/
+.screen {
+  flex: 0 0 20vh;
+  background: #f0f0f0; /* Gris claro */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  padding: 1vmax;
+  box-sizing: border-box;
+}
+
+/* Expresión y resultado */
+.expression {
+  font-size: 3vmax;
+  color: #555;
+}
+.result {
+  font-size: 5vmax;
+  font-weight: bold;
+}
+
+/* Botones */
+.btn {
+  flex: 1;
+  margin: 0.5vmax;
+  border: none;
+  border-radius: 1vmax;
+  background: linear-gradient(to top, #e0e0e0, #ffffff);
+  /* Sombra más pronunciada */
+  box-shadow: 0 0.4vmax 1vmax rgba(0, 0, 0, 0.3), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.6);
+  font-size: 4vmax;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover y active */
+.btn:hover {
+  background: linear-gradient(to top, #d6d6d6, #f2f2f2);
+  box-shadow: 0 0.6vmax 0.8vmax rgba(0, 0, 0, 0.25), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.5);
+}
+
+.btn:active {
+  background: linear-gradient(to top, #c8c8c8, #e6e6e6);
+  box-shadow: 0 0.2vmax 0.4vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.5);
+  transform: scale(0.98);
+}
+
+/* Imagen empresarial */
+.flat-logo {
+  padding: 0 3.3vw 0 3.2vw;
+  background: none;
+  box-shadow: none;
+  cursor: pointer;
+  border: none;
+}
+svg {
+  height: 6vmax;
+  width: 18.5vw;
+  margin-top: 0.1vmax;
+  transform: scale(1.2);
+  background-color: #61b17246;
+}
+
+.btn.backspace {
+  background: #6c757d;              /* Color base distintivo */
+  color: #fff;                     /* Texto en blanco para buen contraste */
+  border: none;
+  border-radius: 1vmax;
+  font-size: 4.7vmax;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  /* Sombra para dar profundidad, similar a otros botones */
+  box-shadow: 0 0.4vmax 0.6vmax rgba(0, 0, 0, 0.2), 
+              inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+/* Efecto hover */
+.btn.backspace:hover {
+  background: #5a6268;
+}
+/* Efecto active */
+.btn.backspace:active {
+  background: #545b62;
+  transform: scale(0.98);
+}
+
+/* 
+   Repartición de espacios
+*/
+.button-row {
+  flex: 1;
+  display: flex;
+}
+
+/* Diferentes colores para operadores, igual, clear, etc. */
+.operator {
+  background: #e08300;
+  color: #fff;
+  box-shadow: 0 0.4vmax 0.6vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+.operator:hover {
+  background: #f0982a;
+  box-shadow: 0 0.6vmax 0.8vmax rgba(0, 0, 0, 0.25), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+.operator:active {
+  background: #d17300;
+  box-shadow: 0 0.2vmax 0.4vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+.sci-func {
+  background: #797979;
+  color: #fff;
+}
+.sci-func:hover {
+  background: #6c6c6c;
+}
+.sci-func:active {
+  background: #5a5a5a;
+}
+
+.equals {
+  background: #28a745;
+  color: #fff;
+  box-shadow: 0 0.4vmax 0.6vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+.equals:hover {
+  background: #34ba54;
+  box-shadow: 0 0.6vmax 0.8vmax rgba(0, 0, 0, 0.25), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+.equals:active {
+  background: #259a3e;
+  box-shadow: 0 0.2vmax 0.4vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+.clear {
+  background: #dc3545;
+  color: #fff;
+  box-shadow: 0 0.4vmax 0.6vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+.clear:hover {
+  background: #e04a58;
+  box-shadow: 0 0.6vmax 0.8vmax rgba(0, 0, 0, 0.25), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+.clear:active {
+  background: #c72f41;
+  box-shadow: 0 0.2vmax 0.4vmax rgba(0, 0, 0, 0.2), inset 0 0.1vmax 0.2vmax rgba(255, 255, 255, 0.3);
+}
+
+/* Contenedor del botón especial (cuadrícula de símbolos) */
+.special-wrapper {
+  position: relative;
+  flex: 1;
+  margin: 0.5vmax;
+  border-radius: 1vmax;
+  background: linear-gradient(to top, #e0e0e0, #ffffff);
+  box-shadow: 0 0.4vmax 1vmax rgba(0,0,0,0.3), inset 0 0.1vmax 0.2vmax rgba(255,255,255,0.6);
+  cursor: pointer;
+}
+/* Botón interno estilizado como otros botones */
+.inner-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 2.5vmax;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 4vmax;
+}
+/* Menú desplegable estilizado en cuadrícula */
+.dropdown-menu {
+  visibility: hidden; /* Ocultar sin eliminar espacio */
+  opacity: 0;
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 1vmax;
+  box-shadow: 0 0.5vmax 1vmax rgba(0,0,0,0.3);
+  padding: 0.3vmax;
+  box-sizing: border-box;
+  z-index: 1000;
+
+  /* Cuadrícula */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(7vmax, 1fr)); /* 3 columnas */
+  grid-template-rows: repeat(2, minmax(7vmax, auto));  /* 2 filas */
+  gap: 0.7vmax; /* Espacio entre elementos */
+}
+/* Cuando el menú esté activo */
+.dropdown-menu.active {
+  visibility: visible; /* Ahora sí se muestra */
+  opacity: 1;
+}
+/* Cada ítem en el menú estilizado como botón independiente */
+.dropdown-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, #ffffff, #eaeaea);
+  box-shadow: 0 0.3vmax 0.6vmax rgba(0,0,0,0.2), inset 0 0.1vmax 0.2vmax rgba(255,255,255,0.6);
+  border-radius: 0.7vmax;
+  font-size: 2.5vmax;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  font-size: 4vmax;
+  transition: all 0.2s ease-in-out;
+}
+/* Efecto Hover y Active */
+.dropdown-item:hover {
+  background: linear-gradient(to top, #dcdcdc, #f8f8f8);
+  box-shadow: 0 0.4vmax 0.7vmax rgba(0,0,0,0.3);
+}
+.dropdown-item:active {
+  background: linear-gradient(to top, #c0c0c0, #e0e0e0);
+  transform: scale(0.95);
+}
+
+/* Ajuste del tamaño de fuente en pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .expression { font-size: 1rem; }
+  .result { font-size: 1.4rem; }
+  .btn { font-size: 1rem; }
+}

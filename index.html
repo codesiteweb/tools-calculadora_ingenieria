@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Calculadora de ingeniería</title>
+
+  <meta name="description" content="Calculadora de ingeniería para realizar cálculos científicos y de ingeniería de forma interactiva.">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- Hoja de estilo -->
+  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
+  
+  <!-- Color del tema -->
+  <meta name="theme-color" content="#FFFFFF" />
+</head>
+<body>
+  <main class="calculator-container">
+    <!-- Pantalla de la calculadora -->
+    <div class="screen">
+      <div id="expression" class="expression"></div>
+      <div id="result" class="result">0</div>
+    </div>
+
+    <!-- Fila 1 de funciones de ingeniería -->
+    <div class="button-row">
+      <button class="btn sci-func" data-func="sin" aria-label="Función seno">sin</button>
+      <button class="btn sci-func" data-func="cos" aria-label="Función coseno">cos</button>
+      <button class="btn sci-func" data-func="tan" aria-label="Función tangente">tan</button>
+      <button class="btn sci-func" data-func="log" aria-label="Función logaritmo">log</button>
+    </div>
+
+    <!-- Fila 2 de funciones de ingeniería -->
+    <div class="button-row">
+      <button class="btn sci-func" data-func="sqrt" aria-label="Raíz cuadrada">√</button>
+      <button class="btn sci-func" data-func="^" aria-label="Potencia">x^y</button>
+      <button class="btn sci-func" data-func="factorial" aria-label="Función factorial">n!</button>
+      <button class="btn sci-func" data-func="pi" aria-label="Valor pi">π</button>
+    </div>
+
+    <!-- Fila combinada para botones especiales: porcentaje, coma, grado, paréntesis, retroceso, mod y limpiar -->
+    <div class="button-row">
+      <!-- Imagen empresarial -->
+      <button class="flat-logo" data-value="build-code" aria-label="Logo code site web">
+        <svg width="32" height="32" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <!-- Círculo de fondo -->
+          <circle cx="32" cy="32" r="32" fill="#00d4b8"/>
+          <!-- Hexágono rotado (puntas hacia los lados) -->
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#d40000;stop-opacity:1"/>
+              <stop offset="100%" style="stop-color:#eb003b;stop-opacity:1"/>
+            </linearGradient>
+          </defs>
+          <polygon fill="url(#grad1)" points="4,32 16,12 48,12 60,32 48,52 16,52"/>
+          <!-- Icono interno de código -->
+          <polyline points="26,24 18,32 26,40" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="38,24 46,32 38,40" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="32" y1="28" x2="32" y2="36" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </button>
+            
+      <!-- Fila paréntesis -->
+      <!-- <button class="btn" data-value="(" aria-label="Abrir paréntesis">(</button> -->
+      <!-- <button class="btn" data-value=")" aria-label="Cerrar paréntesis">)</button> -->
+
+      <!-- Fila con coma, grado, retroceso, mod y reseteo -->
+      <!-- <button class="btn" data-value="," aria-label="" aria-label="Signo de puntuación, coma">,</button> -->
+      <!-- <button class="btn" data-value="°" aria-label="Signo grado">°</button> -->
+      <button class="btn backspace" data-value="backspace" aria-label="Botón borrado hacia atrás">⬅</button>
+      <button class="btn operator" data-value="mod" aria-label="Operador módulo">mod</button>
+      <button class="btn operator" data-value="+" aria-label="Signo más">+</button>
+    </div>
+
+    <!-- Fila de dígitos y operadores -->
+    <div class="button-row">
+      <button class="btn" data-value="7" aria-label="Número siete">7</button>
+      <button class="btn" data-value="8" aria-label="Número ocho">8</button>
+      <button class="btn" data-value="9" aria-label="Número nueve">9</button>
+      <button class="btn operator" data-value="-" aria-label="Signo de resta">-</button>
+    </div>
+
+    <div class="button-row">
+      <button class="btn" data-value="4" aria-label="Número cuatro">4</button>
+      <button class="btn" data-value="5" aria-label="Número cinco">5</button>
+      <button class="btn" data-value="6" aria-label="Número seis">6</button>
+      <button class="btn operator" data-value="*" aria-label="Signo de multiplicación">×</button>
+    </div>
+
+    <div class="button-row">
+      <button class="btn" data-value="1" aria-label="Número uno">1</button>
+      <button class="btn" data-value="2" aria-label="Número dos">2</button>
+      <button class="btn" data-value="3" aria-label="Número tres">3</button>
+      <button class="btn operator" data-value="/" aria-label="Signo de división">÷</button>
+    </div>
+
+    <div class="button-row">
+      <button class="btn" data-value="0" aria-label="Número cero">0</button>
+
+      <!-- Contenedor para el botón de símbolos especiales -->
+      <div class="btn special-wrapper" aria-label="Contenedor de símbolos">
+        <button id="specialCharsBtn" class="inner-btn" aria-label="Símbolos especiales">(),.°</button>
+        <div id="specialCharsMenu" class="dropdown-menu">
+          <button class="dropdown-item" data-value="(">(</button>
+          <button class="dropdown-item" data-value=")">)</button>
+          <button class="dropdown-item" data-value=",">,</button>
+          <button class="dropdown-item" data-value=".">.</button>
+          <button class="dropdown-item" data-value="°">°</button>
+        </div>
+      </div>
+      
+      <!-- <button class="btn decimal" data-value="." aria-label="Signo de puntuación, punto">.</button> -->
+      <button class="btn clear" id="clearBtn" aria-label="Limpiar pantalla calculadora">C</button>
+      <button class="btn equals" data-value="=" aria-label="Signo igual">=</button>
+    </div>
+  </main>
+
+  <script src="scripts.js" defer></script>
+</body>
+</html>
